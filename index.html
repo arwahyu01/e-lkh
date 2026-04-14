@@ -2587,78 +2587,242 @@
         </div>
     </section>
 
-    <!-- SLIDE 8: PRECISION CIRCULAR PROCESS -->
-    <section class="slide">
-        <div class="glass-panel">
-            <div class="red-gold-line"></div>
-            <h2 class="text-3xl font-black mb-12 uppercase tracking-[0.2em] reveal">Alur 6 Tahapan Aktualisasi</h2>
+<!-- SLIDE 8: ARCHITECTURAL 6-STEP PROCESS -->
+<section class="slide">
+    <style>
+        .process-grid-main {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 2.5rem;
+            align-items: center;
+            width: 100%;
+        }
 
-            <div class="process-layout-grid">
-                <!-- Left: Precision Orbit -->
-                <div class="reveal delay-1">
-                    <div class="orbit-viewport">
-                        <div class="orbit-svg-container">
-                            <svg width="500" height="500" viewBox="0 0 500 500">
-                                <circle class="main-orbit-path" cx="250" cy="250" r="210"/>
-                                <circle class="active-orbit-segment" cx="250" cy="250" r="210"/>
-                            </svg>
-                        </div>
+        .orbit-stage {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            margin: 0 auto;
+        }
 
-                        <div class="center-hub">
-                            <p class="text-[10px] font-black tracking-widest text-id-gold mb-1">STRATEGI</p>
-                            <h4 class="text-xl font-black text-white">E-LKH</h4>
-                            <div class="w-10 h-1 bg-id-red mt-2 rounded-full"></div>
-                        </div>
+        .orbit-line-svg {
+            position: absolute;
+            inset: 0;
+            transform: rotate(-90deg);
+        }
 
-                        <!-- 6 Precise Nodes -->
-                        <div class="node-point n-1 active" data-step="1" data-title="Analisis Kebutuhan Sistem" data-kegiatan="Melakukan identifikasi masalah dan alur pelaporan LKH di KPU Siak." data-output="Dokumen Rekomendasi Fitur">
-                            <span class="node-icon">📊</span>
-                            <span class="node-label">Tahap 01</span>
-                        </div>
-                        <div class="node-point n-2" data-step="2" data-title="Penyusunan Format LKH" data-kegiatan="Menyusun format standar pelaporan kinerja harian yang baku dan seragam." data-output="Format Baku LKH Digital">
-                            <span class="node-icon">📄</span>
-                            <span class="node-label">Tahap 02</span>
-                        </div>
-                        <div class="node-point n-3" data-step="3" data-title="Pembangunan E-LKH" data-kegiatan="Membangun sistem berbasis Google Apps Script sesuai format yang disepakati." data-output="Sistem E-LKH Fungsional">
-                            <span class="node-icon">⚙️</span>
-                            <span class="node-label">Tahap 03</span>
-                        </div>
-                        <div class="node-point n-4" data-step="4" data-title="Uji Coba & Sosialisasi" data-kegiatan="Simulasi penggunaan sistem kepada seluruh ASN di lingkungan KPU Siak." data-output="Feedback & Pemahaman User">
-                            <span class="node-icon">📣</span>
-                            <span class="node-label">Tahap 04</span>
-                        </div>
-                        <div class="node-point n-5" data-step="5" data-title="Evaluasi & Perbaikan" data-kegiatan="Menganalisis hasil uji coba dan melakukan penyempurnaan sistem (bug fixing)." data-output="Sistem Versi Final">
-                            <span class="node-icon">🔧</span>
-                            <span class="node-label">Tahap 05</span>
-                        </div>
-                        <div class="node-point n-6" data-step="6" data-title="Laporan Akhir" data-kegiatan="Menyusun laporan pelaksanaan aktualisasi secara lengkap dan akuntabel." data-output="Dokumen Laporan Final">
-                            <span class="node-icon">📑</span>
-                            <span class="node-label">Tahap 06</span>
-                        </div>
+        .center-hub-digital {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px; height: 150px;
+            background: radial-gradient(circle at 30% 30%, rgba(200, 16, 46, 0.4), rgba(5, 5, 5, 1));
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(200, 16, 46, 0.3), inset 0 0 20px rgba(255,255,255,0.05);
+            z-index: 10;
+        }
+
+        .step-node {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 20;
+        }
+
+        .step-node:hover, .step-node.active {
+            background: rgba(200, 16, 46, 0.25);
+            border-color: var(--id-gold);
+            transform: scale(1.18);
+            box-shadow: 0 0 25px rgba(200, 16, 46, 0.5);
+        }
+
+        /* Precise Circular Positioning */
+        .pos-1 { top: 0%; left: 50%; transform: translate(-50%, -50%); }
+        .pos-2 { top: 25%; left: 93.3%; transform: translate(-50%, -50%); }
+        .pos-3 { top: 75%; left: 93.3%; transform: translate(-50%, -50%); }
+        .pos-4 { top: 100%; left: 50%; transform: translate(-50%, -50%); }
+        .pos-5 { top: 75%; left: 6.7%; transform: translate(-50%, -50%); }
+        .pos-6 { top: 25%; left: 6.7%; transform: translate(-50%, -50%); }
+
+        .node-icon-main { font-size: 1.4rem; margin-bottom: 0.2rem; }
+        .node-tag { font-size: 0.5rem; font-weight: 900; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; }
+        .active .node-tag { color: var(--id-gold); }
+
+        /* Detail Panel Styling */
+        .info-panel-right {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-label {
+            font-size: 0.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--id-gold);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .value-pill {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(200, 16, 46, 0.2);
+            border: 1px solid rgba(200, 16, 46, 0.4);
+            border-radius: 99px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #ff9999;
+            margin-right: 0.5rem;
+        }
+    </style>
+
+    <div class="glass-panel" style="max-width: 1200px;">
+        <div class="red-gold-line"></div>
+        <h2 class="text-3xl font-black mb-10 uppercase tracking-[0.2em] reveal">Alur 6 Tahapan Aktualisasi – E-LKH</h2>
+
+        <div class="process-grid-main">
+            <!-- Left Side: The Interactive Orbit -->
+            <div class="reveal delay-1">
+                <div class="orbit-stage">
+                    <svg class="orbit-line-svg" width="480" height="480" viewBox="0 0 480 480">
+                        <circle cx="240" cy="240" r="200" stroke="rgba(255,255,255,0.08)" stroke-width="2" fill="none" />
+                        <circle cx="240" cy="240" r="200" stroke="var(--id-red)" stroke-width="3" stroke-dasharray="15 10" fill="none" />
+                    </svg>
+
+                    <div class="center-hub-digital">
+                        <p class="text-[9px] font-black tracking-widest text-id-gold mb-1 uppercase">Strategi</p>
+                        <h4 class="text-xl font-black text-white">E-LKH</h4>
+                    </div>
+
+                    <!-- 6 Nodes with Data -->
+                    <div class="step-node pos-1 active" data-id="1" data-title="Analisis Kebutuhan Sistem" data-tahapan="Konsultasi atasan; Identifikasi kondisi LKH; Diskusi kebutuhan pengguna" data-output="Dokumen kebutuhan sistem" data-nilai="Akuntabel, Kolaboratif">
+                        <span class="node-icon-main">📊</span>
+                        <span class="node-tag">Tahap 01</span>
+                    </div>
+                    <div class="step-node pos-2" data-id="2" data-title="Penyusunan Format LKH" data-tahapan="Analisis format lama; Penyusunan draft format; Validasi atasan" data-output="Format baku LKH" data-nilai="Kompeten, Akuntabel">
+                        <span class="node-icon-main">📄</span>
+                        <span class="node-tag">Tahap 02</span>
+                    </div>
+                    <div class="step-node pos-3" data-id="3" data-title="Pembangunan Sistem E-LKH" data-tahapan="Perancangan sistem; Pengembangan aplikasi; Uji fungsi internal" data-output="Sistem E-LKH (versi awal)" data-nilai="Kompeten, Adaptif">
+                        <span class="node-icon-main">⚙️</span>
+                        <span class="node-tag">Tahap 03</span>
+                    </div>
+                    <div class="step-node pos-4" data-id="4" data-title="Uji Coba & Sosialisasi" data-tahapan="Uji coba dengan pengguna; Sosialisasi sistem; Pendampingan ASN" data-output="Sistem teruji & dipahami pengguna" data-nilai="Pelayanan, Kolaboratif">
+                        <span class="node-icon-main">📣</span>
+                        <span class="node-tag">Tahap 04</span>
+                    </div>
+                    <div class="step-node pos-5" data-id="5" data-title="Evaluasi & Perbaikan" data-tahapan="Pengumpulan feedback; Analisis hasil; Perbaikan sistem" data-output="Sistem final E-LKH" data-nilai="Adaptif, Akuntabel">
+                        <span class="node-icon-main">🔧</span>
+                        <span class="node-tag">Tahap 05</span>
+                    </div>
+                    <div class="step-node pos-6" data-id="6" data-title="Penyusunan Laporan" data-tahapan="Penyusunan laporan; Konsultasi mentor; Finalisasi laporan" data-output="Laporan aktualisasi" data-nilai="Akuntabel, Kompeten">
+                        <span class="node-icon-main">📑</span>
+                        <span class="node-tag">Tahap 06</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right: Content Panel -->
-                <div class="description-panel reveal delay-2">
-                    <div id="stepInfo">
-                        <span id="stepTag" class="px-3 py-1 bg-red-600 text-[10px] font-black rounded-full text-white tracking-widest">TAHAP 01</span>
-                        <h3 id="stepTitle" class="text-2xl font-black text-white mt-4 mb-6 leading-tight">Analisis Kebutuhan Sistem</h3>
+            <!-- Right Side: The Structured Info Panel -->
+            <div class="info-panel-right reveal delay-2 shadow-2xl">
+                <div id="dynamicContent">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span id="dispID" class="bg-red-600 text-white font-black text-[10px] px-3 py-1 rounded-lg shadow-lg shadow-red-600/20">TAHAP 01</span>
+                        <div class="h-px flex-1 bg-white/10"></div>
+                    </div>
+                    
+                    <h3 id="dispTitle" class="text-3xl font-black text-white mb-8 leading-tight">Analisis Kebutuhan Sistem</h3>
 
-                        <div class="space-y-6">
-                            <div>
-                                <p class="text-[10px] font-black text-id-gold uppercase tracking-widest mb-1">Kegiatan Utama:</p>
-                                <p id="stepKegiatan" class="text-sm text-gray-300 leading-relaxed italic">Melakukan identifikasi masalah dan alur pelaporan LKH di KPU Siak.</p>
+                    <div class="space-y-8">
+                        <section>
+                            <span class="section-label">Tahapan Utama:</span>
+                            <ul id="dispSteps" class="text-sm text-gray-300 space-y-2 list-disc list-inside marker:text-id-red">
+                                <li>Konsultasi dengan atasan</li>
+                                <li>Identifikasi kondisi LKH</li>
+                                <li>Diskusi kebutuhan pengguna</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <span class="section-label">Output Nyata:</span>
+                            <p id="dispOutput" class="text-sm font-bold text-white bg-white/5 p-3 rounded-xl border border-white/10 inline-block">Dokumen kebutuhan sistem</p>
+                        </section>
+
+                        <section>
+                            <span class="section-label">Nilai BerAKHLAK Dominan:</span>
+                            <div id="dispNilai" class="flex gap-2">
+                                <span class="value-pill">Akuntabel</span>
+                                <span class="value-pill">Kolaboratif</span>
                             </div>
-                            <div class="p-4 bg-white/5 border-l-2 border-id-red rounded-r-xl">
-                                <p class="text-[10px] font-black text-white uppercase tracking-widest mb-1">Output / Hasil:</p>
-                                <p id="stepOutput" class="text-sm font-bold text-white">Dokumen Rekomendasi Fitur</p>
-                            </div>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <script>
+        // Logic khusus Slide 8 - Update Detail Panel
+        document.querySelectorAll('.step-node').forEach(node => {
+            node.addEventListener('mouseenter', function() {
+                // Update Status Aktif di Orbit
+                document.querySelectorAll('.step-node').forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
+
+                // Ambil Data dari Atribut
+                const id = this.dataset.id;
+                const title = this.dataset.title;
+                const steps = this.dataset.tahapan.split(';');
+                const output = this.dataset.output;
+                const nilai = this.dataset.nilai.split(',');
+
+                // Animasi Transisi Konten
+                const panel = document.getElementById('dynamicContent');
+                panel.style.opacity = '0';
+                panel.style.transform = 'translateY(10px)';
+
+                setTimeout(() => {
+                    document.getElementById('dispID').innerText = `TAHAP 0${id}`;
+                    document.getElementById('dispTitle').innerText = title;
+                    document.getElementById('dispOutput').innerText = output;
+
+                    // Render Steps
+                    const stepsUl = document.getElementById('dispSteps');
+                    stepsUl.innerHTML = steps.map(s => `<li>${s.trim()}</li>`).join('');
+
+                    // Render Nilai
+                    const nilaiDiv = document.getElementById('dispNilai');
+                    nilaiDiv.innerHTML = nilai.map(n => `<span class="value-pill">${n.trim()}</span>`).join('');
+
+                    panel.style.opacity = '1';
+                    panel.style.transform = 'translateY(0)';
+                }, 200);
+            });
+        });
+    </script>
+</section>
 
     <!-- SLIDE 9: REKAPITULASI BerAKHLAK (BENTO DASHBOARD) -->
     <section class="slide slide-berakhlak">
