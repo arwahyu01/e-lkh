@@ -1861,7 +1861,7 @@ table tr:nth-child(even) {
 }
 
 .t-role {
-    font-size: 0.55rem;
+    font-size: 0.85rem;
     font-weight: 900;
     color: var(--id-gold);
     text-transform: uppercase;
@@ -1869,7 +1869,7 @@ table tr:nth-child(even) {
 }
 
 .t-name {
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     font-weight: 700;
     color: #fff;
 }
