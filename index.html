@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -357,7 +357,7 @@
                     <div class="md:col-span-4 reveal delay-2">
                         <div id="apklDetail"
                             class="bg-white/5 border border-white/10 rounded-3xl p-6 h-full relative overflow-hidden">
-                            <div class="absolute -right-4 -bottom-4 text-6xl opacity-5 font-black uppercase" id="bgAcr">
+                            <div class="absolute right-1 -bottom-0 text-4xl opacity-5 font-black uppercase" id="bgAcr">
                                 APKL</div>
                             <h3
                                 class="text-id-gold font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
@@ -381,7 +381,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- SLIDE 5: FISHBONE -->
         <section class="slide">
@@ -409,7 +408,7 @@
                     </div>
 
                     <!-- Causes -->
-                    <div class="absolute top-2 left-[12%] w-52 bg-white/5 p-3 rounded-xl border border-white/20">
+                    <div class="absolute top-2 left-[20%] w-52 bg-white/5 p-3 rounded-xl border border-white/20">
                         <h4 class="text-id-gold font-black text-[9px] uppercase mb-1">SDM (MAN)</h4>
                         <p class="text-[10px] text-gray-300">Disiplin & pemahaman ASN pelaporan harian rendah</p>
                     </div>
@@ -586,161 +585,6 @@
 
         <!-- SLIDE 8: ARCHITECTURAL 6-STEP PROCESS -->
         <section class="slide">
-            <style>
-                .process-grid-main {
-                    display: grid;
-                    grid-template-columns: 1.1fr 0.9fr;
-                    gap: 2.5rem;
-                    align-items: center;
-                    width: 100%;
-                }
-
-                .orbit-stage {
-                    position: relative;
-                    width: 480px;
-                    height: 480px;
-                    margin: 0 auto;
-                }
-
-                .orbit-line-svg {
-                    position: absolute;
-                    inset: 0;
-                    transform: rotate(-90deg);
-                }
-
-                .center-hub-digital {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 150px;
-                    height: 150px;
-                    background: radial-gradient(circle at 30% 30%, rgba(200, 16, 46, 0.4), rgba(5, 5, 5, 1));
-                    border: 2px solid rgba(255, 255, 255, 0.15);
-                    border-radius: 50%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    box-shadow: 0 0 40px rgba(200, 16, 46, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05);
-                    z-index: 10;
-                }
-
-                .step-node {
-                    position: absolute;
-                    width: 100px;
-                    height: 80px;
-                    background: rgba(15, 15, 15, 0.8);
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                    border-radius: 1.2rem;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                    z-index: 20;
-                }
-
-                .step-node:hover,
-                .step-node.active {
-                    background: rgba(200, 16, 46, 0.25);
-                    border-color: var(--id-gold);
-                    transform: scale(1.18);
-                    box-shadow: 0 0 25px rgba(200, 16, 46, 0.5);
-                }
-
-                /* Precise Circular Positioning */
-                .pos-1 {
-                    top: 0%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .pos-2 {
-                    top: 25%;
-                    left: 93.3%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .pos-3 {
-                    top: 75%;
-                    left: 93.3%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .pos-4 {
-                    top: 100%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .pos-5 {
-                    top: 75%;
-                    left: 6.7%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .pos-6 {
-                    top: 25%;
-                    left: 6.7%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .node-icon-main {
-                    font-size: 1.4rem;
-                    margin-bottom: 0.2rem;
-                }
-
-                .node-tag {
-                    font-size: 0.5rem;
-                    font-weight: 900;
-                    text-transform: uppercase;
-                    color: rgba(255, 255, 255, 0.4);
-                    letter-spacing: 0.1em;
-                }
-
-                .active .node-tag {
-                    color: var(--id-gold);
-                }
-
-                /* Detail Panel Styling */
-                .info-panel-right {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 2.5rem;
-                    padding: 2.5rem;
-                    min-height: 480px;
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    overflow: hidden;
-                }
-
-                .section-label {
-                    font-size: 0.6rem;
-                    font-weight: 900;
-                    text-transform: uppercase;
-                    letter-spacing: 0.2em;
-                    color: var(--id-gold);
-                    margin-bottom: 0.5rem;
-                    display: block;
-                }
-
-                .value-pill {
-                    display: inline-block;
-                    padding: 0.25rem 0.75rem;
-                    background: rgba(200, 16, 46, 0.2);
-                    border: 1px solid rgba(200, 16, 46, 0.4);
-                    border-radius: 99px;
-                    font-size: 0.65rem;
-                    font-weight: 800;
-                    color: #ff9999;
-                    margin-right: 0.5rem;
-                }
-            </style>
-
             <div class="glass-panel" style="max-width: 1200px;">
                 <div class="red-gold-line"></div>
                 <h2 class="text-3xl font-black mb-10 uppercase tracking-[0.2em] reveal">Alur 6 Tahapan Aktualisasi –
@@ -846,46 +690,6 @@
                     </div>
                 </div>
             </div>
-
-            <script>
-                // Logic khusus Slide 8 - Update Detail Panel
-                document.querySelectorAll('.step-node').forEach(node => {
-                    node.addEventListener('mouseenter', function () {
-                        // Update Status Aktif di Orbit
-                        document.querySelectorAll('.step-node').forEach(n => n.classList.remove('active'));
-                        this.classList.add('active');
-
-                        // Ambil Data dari Atribut
-                        const id = this.dataset.id;
-                        const title = this.dataset.title;
-                        const steps = this.dataset.tahapan.split(';');
-                        const output = this.dataset.output;
-                        const nilai = this.dataset.nilai.split(',');
-
-                        // Animasi Transisi Konten
-                        const panel = document.getElementById('dynamicContent');
-                        panel.style.opacity = '0';
-                        panel.style.transform = 'translateY(10px)';
-
-                        setTimeout(() => {
-                            document.getElementById('dispID').innerText = `TAHAP 0${id}`;
-                            document.getElementById('dispTitle').innerText = title;
-                            document.getElementById('dispOutput').innerText = output;
-
-                            // Render Steps
-                            const stepsUl = document.getElementById('dispSteps');
-                            stepsUl.innerHTML = steps.map(s => `<li>${s.trim()}</li>`).join('');
-
-                            // Render Nilai
-                            const nilaiDiv = document.getElementById('dispNilai');
-                            nilaiDiv.innerHTML = nilai.map(n => `<span class="value-pill">${n.trim()}</span>`).join('');
-
-                            panel.style.opacity = '1';
-                            panel.style.transform = 'translateY(0)';
-                        }, 200);
-                    });
-                });
-            </script>
         </section>
 
         <!-- SLIDE 9: REKAPITULASI BerAKHLAK (BENTO DASHBOARD) -->
@@ -1359,7 +1163,6 @@
             });
         });
     </script>
-
     <script>
         function updateAPKL(type) {
             const content = document.getElementById('apklContent');
@@ -1368,11 +1171,11 @@
             if (type === 'core') {
                 bgAcr.innerText = "CORE";
                 content.innerHTML = `
-                        <p class="text-white font-bold mb-2">Kenapa menjadi Prioritas Utama?</p>
-                        <p><b>A (Aktual):</b> Isu sedang terjadi, pelaporan manual masih berlangsung & dikeluhkan karena tidak efisien.</p>
-                        <p><b>P (Problematik):</b> Menyentuh aspek Tunjangan Kinerja (Tukin). Kesalahan input = Kesalahan pembayaran.</p>
-                        <p><b>K (Kekhalayakan):</b> Bukan masalah individu, tapi masalah sistemik yang dirasakan seluruh pegawai (ASN).</p>
-                        <p><b>L (Layak):</b> Sangat mungkin diselesaikan dalam masa habituasi dengan pemanfaatan IT yang tepat.</p>
+                        <p class="text-white font-bold mb-2">Mengapa Menjadi Prioritas Utama?</p>
+                        <p><b>A (Aktual):</b> Isu ini sedang terjadi saat ini; proses pelaporan masih dilakukan secara manual sehingga kurang efisien dan sering menimbulkan kendala dalam pelaksanaannya.</p>
+                        <p><b>P (Problematik):</b> Berkaitan langsung dengan Tunjangan Kinerja (Tukin), sehingga ketidaktertiban pelaporan berpotensi menimbulkan ketidaksesuaian dalam proses administrasi pembayaran.</p>
+                        <p><b>K (Khalayak):</b> Bersifat sistemik dan berdampak pada seluruh ASN, bukan hanya pada individu atau unit tertentu.</p>
+                        <p><b>L (Layak):</b> Memiliki solusi yang realistis untuk diimplementasikan dalam masa habituasi melalui pemanfaatan teknologi informasi tanpa memerlukan sumber daya besar.</p>
                     `;
             } else if (type === 'tamu') {
                 bgAcr.innerText = "TAMU";
@@ -1389,7 +1192,6 @@
             }
         }
     </script>
-
     <script>
         // Logic khusus Slide 8
         document.querySelectorAll('.node-point').forEach(node => {
@@ -1415,7 +1217,6 @@
             });
         });
     </script>
-
     <script>
         document.querySelectorAll('.timeline-item').forEach(item => {
             item.addEventListener('mouseenter', function () {
@@ -1513,6 +1314,45 @@
                     detail.innerHTML = `<span class="text-white font-bold uppercase mr-2">Fokus:</span> ${this.dataset.desc}`;
                     detail.style.opacity = '1';
                 }, 150);
+            });
+        });
+    </script>
+    <script>
+        // Logic khusus Slide 8 - Update Detail Panel
+        document.querySelectorAll('.step-node').forEach(node => {
+            node.addEventListener('mouseenter', function () {
+                // Update Status Aktif di Orbit
+                document.querySelectorAll('.step-node').forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
+
+                // Ambil Data dari Atribut
+                const id = this.dataset.id;
+                const title = this.dataset.title;
+                const steps = this.dataset.tahapan.split(';');
+                const output = this.dataset.output;
+                const nilai = this.dataset.nilai.split(',');
+
+                // Animasi Transisi Konten
+                const panel = document.getElementById('dynamicContent');
+                panel.style.opacity = '0';
+                panel.style.transform = 'translateY(10px)';
+
+                setTimeout(() => {
+                    document.getElementById('dispID').innerText = `TAHAP 0${id}`;
+                    document.getElementById('dispTitle').innerText = title;
+                    document.getElementById('dispOutput').innerText = output;
+
+                    // Render Steps
+                    const stepsUl = document.getElementById('dispSteps');
+                    stepsUl.innerHTML = steps.map(s => `<li>${s.trim()}</li>`).join('');
+
+                    // Render Nilai
+                    const nilaiDiv = document.getElementById('dispNilai');
+                    nilaiDiv.innerHTML = nilai.map(n => `<span class="value-pill">${n.trim()}</span>`).join('');
+
+                    panel.style.opacity = '1';
+                    panel.style.transform = 'translateY(0)';
+                }, 200);
             });
         });
     </script>
